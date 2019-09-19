@@ -30,6 +30,7 @@ import com.example.ultimateproject.SharedPref.MyPreferences;
  */
 public class OnBoard extends AppCompatActivity {
     Boolean finishFlag=false;
+    //as
 //    DatabaseHelper myDbHelper;
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
