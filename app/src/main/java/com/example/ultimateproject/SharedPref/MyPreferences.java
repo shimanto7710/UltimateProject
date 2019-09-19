@@ -55,7 +55,7 @@ public class MyPreferences {
      * initialize it
      * @param isStudent as boolean to handle one time use
      */
-    public void oneTimeUse(boolean isStudent){
+    public void setOneTimeUse(boolean isStudent){
         editor.putBoolean(Config.ONE_TIME_USE, isStudent);
         editor.apply();
     }
@@ -64,7 +64,7 @@ public class MyPreferences {
      * return the status
      * @return get the status true or false
      */
-    public boolean oneTimeUse(){
+    public boolean getOneTimeUse(){
         return sharedPreferences.getBoolean(Config.ONE_TIME_USE, false); //assume the default value is false
     }
 
