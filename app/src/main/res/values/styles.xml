@@ -25,7 +25,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fontFamily">@font/solaimanlipinormal</item>
-        <!--<item name="android:typeface">@font/solaimanlipinormal</item>-->
+        <!--<item titleTv="android:typeface">@font/solaimanlipinormal</item>-->
         <item name="fontFamily">@font/solaimanlipinormal</item>
 
 
@@ -34,7 +34,7 @@
     <style name="SplashActivityTheme" parent="customizeTheme">
         <item name="android:windowBackground">@drawable/splash_background</item>
         <item name="android:windowTranslucentStatus">true</item>
-        <!--<item name="android:windowTranslucentNavigation">true</item>-->
+        <!--<item titleTv="android:windowTranslucentNavigation">true</item>-->
     </style>
 
 </resources>

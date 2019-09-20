@@ -32,8 +32,8 @@ public class MyPreferences {
     }
 
     /**
-     * Initialize the name of shared preference
-     * @param userName name of shared preference as String
+     * Initialize the titleTv of shared preference
+     * @param userName titleTv of shared preference as String
      */
     public void setUserName(String userName){
         editor.putString(Config.USER_NAME, userName);
@@ -42,7 +42,7 @@ public class MyPreferences {
 
     /**
      * get shared preference if it is already created
-     * @return get name of the existing shared preference
+     * @return get titleTv of the existing shared preference
      */
     public String getUserName(){
         //if no data is available for Config.USER_NAME then this getString() method returns

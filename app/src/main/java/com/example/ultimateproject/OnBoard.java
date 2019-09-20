@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
@@ -140,6 +141,9 @@ public class OnBoard extends AppCompatActivity {
         });
 
 
+        // background thread
+//        new BackgroundProcess(this).execute();
+
 
     }
 
@@ -264,5 +268,41 @@ public class OnBoard extends AppCompatActivity {
     }
 
 
+    public class BackgroundProcess extends AsyncTask<String, Boolean, Void> {
+
+        Context context;
+
+        public BackgroundProcess(Context context) {
+            this.context = context;
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+
+        }
+
+        @Override
+        protected Void doInBackground(String... params) {
+
+//            myDbHelper = new DatabaseHelper(getApplicationContext());
+//            initializeDatabase();
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+            Log.d("dipbanik","complete");
+//            Toast.makeText(getApplicationContext(),"Database Copied",Toast.LENGTH_SHORT).show();
+            finishFlag=true;
+//            btnNext.setVisibility();
+        }
+
+    }
 
 }
