@@ -1,7 +1,9 @@
 package com.example.ultimateproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.ultimateproject.R;
@@ -38,6 +42,7 @@ public class EmptyActivity extends AppCompatActivity {
 
         user_list.add(new RecyclerViewModel(1, "shimanto", "abc", "xyz"));
         user_list.add(new RecyclerViewModel(1, "shimanto", "abc", "xyz"));
+        user_list.add(new RecyclerViewModel(1, "ahmed", "abc", "xyz"));
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView11);
         recyclerViewAdapter = new RecyclerViewAdapter(this, user_list);
@@ -68,5 +73,34 @@ public class EmptyActivity extends AppCompatActivity {
         onBackPressed();
         return true;
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        MenuItem menuItem = menu.findItem(R.id.app_bar_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                if (recyclerViewAdapter != null){
+                    recyclerViewAdapter.getFilter().filter(newText);
+                }
+
+                return true;
+            }
+        });
+        return true;
+    }
+
 
 }

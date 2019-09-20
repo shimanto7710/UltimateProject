@@ -37,7 +37,7 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 try {
                     // Thread will sleep for 2 seconds
-                    sleep(2 * 1000);
+                    sleep(1 * 1000);
 
                     // After 5 seconds redirect to another intent
                     Intent i = new Intent(getBaseContext(), OnBoard.class);
