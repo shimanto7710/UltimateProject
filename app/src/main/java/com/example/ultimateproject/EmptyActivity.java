@@ -1,15 +1,19 @@
 package com.example.ultimateproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -21,6 +25,8 @@ import com.example.ultimateproject.RecyclerView.MyDividerItemDecoration;
 import com.example.ultimateproject.RecyclerView.RecyclerItemClickListener;
 import com.example.ultimateproject.RecyclerView.RecyclerViewAdapter;
 import com.example.ultimateproject.RecyclerView.RecyclerViewModel;
+import com.example.ultimateproject.RecyclerView.SwipeToDeleteCallback;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -29,6 +35,9 @@ public class EmptyActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     RecyclerViewAdapter recyclerViewAdapter;
     ArrayList<RecyclerViewModel> user_list = new ArrayList<>();
+
+    ConstraintLayout constraintLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +49,7 @@ public class EmptyActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("EmptyActivity");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        constraintLayout=(ConstraintLayout)findViewById(R.id.ConstraintLayout);
 
 
         user_list.add(new RecyclerViewModel(1, "shimanto", "abc", "xyz"));
@@ -69,6 +79,10 @@ public class EmptyActivity extends AppCompatActivity {
 
             }
         }));
+
+        enableSwipeToDeleteAndUndo();
+
+
     }
 
     @Override
@@ -105,5 +119,41 @@ public class EmptyActivity extends AppCompatActivity {
         return true;
     }
 
+
+    /**
+     * swipe to delete from recyclerview
+     */
+    private void enableSwipeToDeleteAndUndo() {
+        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(this) {
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+
+
+                final int position = viewHolder.getAdapterPosition();
+                final RecyclerViewModel item = recyclerViewAdapter.getData().get(position);
+
+                recyclerViewAdapter.removeItem(position);
+
+
+                Snackbar snackbar = Snackbar
+                        .make(constraintLayout, "Item was removed from the list.", Snackbar.LENGTH_LONG);
+                snackbar.setAction("UNDO", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        recyclerViewAdapter.restoreItem(item, position);
+                        recyclerView.scrollToPosition(position);
+                    }
+                });
+
+                snackbar.setActionTextColor(Color.YELLOW);
+                snackbar.show();
+
+            }
+        };
+
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
+        itemTouchhelper.attachToRecyclerView(recyclerView);
+    }
 
 }

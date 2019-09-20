@@ -16,23 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ultimateproject.R;
 
 import java.util.ArrayList;
-import android.content.Context;
 //import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 //import com.bumptech.glide.Glide;
 //import com.bumptech.glide.request.RequestOptions;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static androidx.constraintlayout.widget.Constraints.TAG;
 
 /**
  * Created by Jaison on 08/10/16.
@@ -132,5 +123,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public int getItemCount() {
         return contactListFiltered.size();
     }
+
+    public void removeItem(int position) {
+        usersList.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void restoreItem(RecyclerViewModel item, int position) {
+        usersList.add(position, item);
+        notifyItemInserted(position);
+    }
+
+    public ArrayList<RecyclerViewModel> getData() {
+        return usersList;
+    }
+
 }
 
