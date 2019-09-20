@@ -5,6 +5,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.ultimateproject.R;
+import com.example.ultimateproject.RecyclerView.MyDividerItemDecoration;
 import com.example.ultimateproject.RecyclerView.RecyclerItemClickListener;
 import com.example.ultimateproject.RecyclerView.RecyclerViewAdapter;
 import com.example.ultimateproject.RecyclerView.RecyclerViewModel;
@@ -49,6 +51,7 @@ public class EmptyActivity extends AppCompatActivity {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+//        recyclerView.addItemDecoration(new MyDividerItemDecoration(this, DividerItemDecoration.VERTICAL, 36));
         recyclerView.setAdapter(recyclerViewAdapter);
 
 
