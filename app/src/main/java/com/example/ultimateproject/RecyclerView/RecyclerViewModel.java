@@ -23,6 +23,12 @@ public class RecyclerViewModel {
         this.date = date;
     }
 
+    public RecyclerViewModel(int id, String name, String posting) {
+        this.id = id;
+        this.name = name;
+        this.posting = posting;
+    }
+
     public int getId() {
         return id;
     }
