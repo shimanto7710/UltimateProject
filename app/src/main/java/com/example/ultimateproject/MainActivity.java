@@ -63,6 +63,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button threadBtn;
+        threadBtn=(Button)findViewById(R.id.thread_btn);
+        threadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),ServiceActivity.class));
+            }
+        });
     }
 
     @Override

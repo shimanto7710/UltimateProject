@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/customizeTheme">
-        <activity android:name=".OnBoard"></activity>
+        <service
+            android:name=".Service.StartedService">
+        </service>
+        <activity android:name=".ServiceActivity"></activity>
+        <activity android:name=".OnBoard" />
         <activity android:name=".EmptyActivity" />
         <activity
             android:name=".MainActivity"
