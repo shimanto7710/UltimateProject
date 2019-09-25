@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 public class StartedService extends IntentService {
-    Handler mHandler = new Handler();
+
 
     public StartedService() {
         super("startedService");
@@ -20,13 +20,14 @@ public class StartedService extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent) {
         // Normally we would do some work here, like download a file.
         // For our sample, we just sleep for 5 seconds.
+        //it is a thread by default so do not need to implement any kind of thread to do heavy work
         try {
             Log.d("service","start");
-//            for (int i=0;i<=100000;i++){
-//                for(int j=0;j<100000;j++){
-//                    //
-//                }
-//            }
+            for (int i=0;i<=100000;i++){
+                for(int j=0;j<100000;j++){
+                    Log.d("aaa","started service thread : j "+j);
+                }
+            }
             Thread.sleep(5000);
             Log.d("service","stop");
         } catch (InterruptedException e) {

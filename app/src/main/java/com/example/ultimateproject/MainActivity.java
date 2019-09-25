@@ -6,6 +6,8 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -25,6 +27,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    final Handler mHandler = new Handler();
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
@@ -72,6 +75,28 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),ServiceActivity.class));
             }
         });
+
+
+
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        }){
+//            public void run(){
+//                for (int i=0;i<10000;i++){
+//                    for (int j=0;j<10000;j++){
+//                        Log.d("aaa","thread :"+j);
+//                    }
+//                }
+//            }
+        };
+
+        thread.start();
+        //        new Thread(new Task()).start();
+
     }
 
     @Override
@@ -87,4 +112,8 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
+
+
 }

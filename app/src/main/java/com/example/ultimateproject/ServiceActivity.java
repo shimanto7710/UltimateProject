@@ -1,12 +1,14 @@
 package com.example.ultimateproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.ultimateproject.Service.ForegroundService;
 import com.example.ultimateproject.Service.StartedService;
 
 public class ServiceActivity extends AppCompatActivity {
@@ -17,9 +19,10 @@ public class ServiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thread);
 
-        Button sBtn,nBtn,bBtn;
+        Button sBtn,nStartBtn,bBtn,nStopBtn;
         sBtn=(Button) findViewById(R.id.started_service);
-        nBtn=(Button) findViewById(R.id.noti_service);
+        nStartBtn=(Button) findViewById(R.id.noti_service_start);
+        nStopBtn=(Button) findViewById(R.id.noti_service_stop);
         bBtn=(Button) findViewById(R.id.bound_service);
 
         sBtn.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +39,33 @@ public class ServiceActivity extends AppCompatActivity {
 
             }
         });
+
+        nStartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                notificationStartService();
+            }
+        });
+
+        nStopBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                notificationStopService();
+            }
+        });
+
+    }
+
+    public void notificationStartService() {
+        Intent serviceIntent = new Intent(this, ForegroundService.class);
+        serviceIntent.putExtra("inputExtra", "Foreground Service Example in Android");
+
+        ContextCompat.startForegroundService(this, serviceIntent);
+    }
+
+    public void notificationStopService() {
+        Intent serviceIntent = new Intent(this, ForegroundService.class);
+        stopService(serviceIntent);
     }
 
 

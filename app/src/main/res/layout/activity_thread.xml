@@ -20,14 +20,31 @@
             tools:layout_editor_absoluteY="22dp"
             tools:ignore="MissingConstraints" />
 
-        <Button
-            android:id="@+id/noti_service"
-            android:layout_width="407dp"
-            android:layout_height="40dp"
-            android:text="Notification Service"
-            tools:layout_editor_absoluteX="3dp"
-            tools:layout_editor_absoluteY="75dp"
-            tools:ignore="MissingConstraints" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/noti_service_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notification start"
+                tools:layout_editor_absoluteX="3dp"
+                tools:layout_editor_absoluteY="75dp"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/noti_service_stop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notification stop"
+                tools:layout_editor_absoluteX="3dp"
+                tools:layout_editor_absoluteY="75dp"
+                tools:ignore="MissingConstraints" />
+
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/bound_service"
