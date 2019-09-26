@@ -47,17 +47,17 @@ public class ForegroundService extends Service {
         //do heavy work on a background thread
         // there is no by default thread so need to implement a thread to do any background work
 
-        thread=new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i=0;i<10000;i++){
-                    for(int j=0;j<1000;j++){
-                        Log.d("zzz","thread: "+j);
-                    }
-                }
-            }
-        });
-        thread.start();
+//        thread=new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                for (int i=0;i<10000;i++){
+//                    for(int j=0;j<1000;j++){
+//                        Log.d("zzz","thread: "+j);
+//                    }
+//                }
+//            }
+//        });
+//        thread.start();
 
 
 
@@ -71,13 +71,13 @@ public class ForegroundService extends Service {
     public void onDestroy() {
         super.onDestroy();
         Toast.makeText(this, "onDestroy method.", Toast.LENGTH_LONG).show();
-        if (thread!=null){
-//            Thread dummy=thread;
-//            thread=null;
-//            thread=null;
+//        if (thread!=null){
+////            Thread dummy=thread;
+////            thread=null;
+////            thread=null;
+////            thread.interrupt();
 //            thread.interrupt();
-            thread.interrupt();
-        }
+//        }
 
     }
 

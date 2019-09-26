@@ -79,23 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
 
-            }
-        }){
-//            public void run(){
-//                for (int i=0;i<10000;i++){
-//                    for (int j=0;j<10000;j++){
-//                        Log.d("aaa","thread :"+j);
-//                    }
-//                }
-//            }
-        };
-
-        thread.start();
-        //        new Thread(new Task()).start();
 
     }
 
