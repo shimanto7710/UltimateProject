@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button threadBtn;
-        threadBtn=(Button)findViewById(R.id.thread_btn);
+        threadBtn= findViewById(R.id.thread_btn);
         threadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,8 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
+        //hello
 
     }
 
