@@ -39,6 +39,7 @@ public class MyPreferences {
         editor.putString(Config.USER_NAME, userName);
         editor.apply();
     }
+    //
 
     /**
      * get shared preference if it is already created
